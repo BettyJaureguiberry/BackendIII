@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Compumar\\OneDrive\\Escritorio\\Adoptme-Entrega1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Compumar\\OneDrive\\Escritorio\\Adoptme-Entrega1\\src\\controllers\\pets.controller.js||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\controllers\\pets.controller.js||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Compumar\\OneDrive\\Escritorio\\Adoptme-Entrega1\\src\\controllers\\sessions.controller.js||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\controllers\\sessions.controller.js||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "pets.controller.js",
+              "DocumentMoniker": "C:\\Users\\Compumar\\OneDrive\\Escritorio\\Adoptme-Entrega1\\src\\controllers\\pets.controller.js",
+              "RelativeDocumentMoniker": "src\\controllers\\pets.controller.js",
+              "ToolTip": "C:\\Users\\Compumar\\OneDrive\\Escritorio\\Adoptme-Entrega1\\src\\controllers\\pets.controller.js",
+              "RelativeToolTip": "src\\controllers\\pets.controller.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-08-10T19:19:25.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "sessions.controller.js",
+              "DocumentMoniker": "C:\\Users\\Compumar\\OneDrive\\Escritorio\\Adoptme-Entrega1\\src\\controllers\\sessions.controller.js",
+              "RelativeDocumentMoniker": "src\\controllers\\sessions.controller.js",
+              "ToolTip": "C:\\Users\\Compumar\\OneDrive\\Escritorio\\Adoptme-Entrega1\\src\\controllers\\sessions.controller.js",
+              "RelativeToolTip": "src\\controllers\\sessions.controller.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-08-10T19:19:21.386Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+README — Mocking Backend API
+Descripción
+API para generar, visualizar y eliminar datos mockeados de usuarios y mascotas. Ideal para testing, validación de modelos y debugging quirúrgico.
+
+## 🚀 Endpoints disponibles
+
+| Método   | Ruta                      | Descripción                                      |
+|----------|---------------------------|--------------------------------------------------|
+| `POST`   | `/api/mocks/generate`     | Genera datos mockeados de usuarios y mascotas   |
+| `GET`    | `/api/mocks/preview`      | Muestra los datos mockeados insertados          |
+| `DELETE` | `/api/mocks/clear`        | Elimina todos los datos mockeados               |
+
+🛡️ Validaciones y blindaje
+    Validación previa de modelos antes de insertar
+    Logs detallados en cada paso (logger.success, logger.warn, logger.error)
+    Middleware global de errores para capturar fallos silenciosos
+    Ocultamiento de credenciales en .env
+    Conexión segura a MongoDB Atlas
+
+🧪 Ejemplos de uso
+🔹 Generar datos
+    curl -X POST http://localhost:8080/api/mocks/generate
+
+🔹 Ver datos generados
+  curl http://localhost:8080/api/mocks/preview
+
+🔹 Borrar datos mockeados
+  curl -X DELETE http://localhost:8080/api/mocks/clear
+
+
+🧠 Helpers y modularidad
+    validateMockData.js: valida consistencia entre modelos y generadores
+    logger.js: logging personalizado con niveles y colores
+    errorHandler.js: middleware global para capturar y responder errores
+
+🔐 Seguridad sugerida
+    Agregar flag MOCKING_ENABLED=true en .env
+    Validar entorno (process.env.NODE_ENV !== 'production')
+    Protección por token o IP si se expone públicamente
