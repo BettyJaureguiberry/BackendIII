@@ -43,7 +43,7 @@ router.get('/preview', async (req, res, next) => {
 });
 
 // 🛠️ Generación de datos mockeados con validación previa
-router.post('/generate', checkMockState ,validateMockInput, async (req, res, next) => {
+router.post('/generateData', checkMockState ,validateMockInput, async (req, res, next) => {
   try {
     logger.info('[Mocking/Generate] Iniciando generación de datos');
 
@@ -70,6 +70,29 @@ router.post('/generate', checkMockState ,validateMockInput, async (req, res, nex
     next(error);
   }
 });
+
+router.get('/mockingusers', (req, res) => {
+  try {
+    const count = parseInt(req.query.count) || 50;
+    const users = generateMockUsers(count);
+    res.status(200).json(users);
+  } catch (error) {
+    req.logger.error('Error al generar usuarios mockeados:', error);
+    res.status(500).json({ error: 'Error al generar usuarios mockeados' });
+  }
+});
+
+router.get('/mockingpets', (req, res) => {
+  try {
+    const count = parseInt(req.query.count) || 50;
+    const pets = generateMockPets(count);
+    res.status(200).json(pets);
+  } catch (error) {
+    req.logger.error('Error al generar mascotas mockeadas:', error);
+    res.status(500).json({ error: 'Error al generar mascotas mockeadas' });
+  }
+});
+
 
 router.delete('/clear', async (req, res, next) => {
   try {

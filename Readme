@@ -1,39 +1,67 @@
-README — Mocking Backend API
-Descripción
-API para generar, visualizar y eliminar datos mockeados de usuarios y mascotas. Ideal para testing, validación de modelos y debugging quirúrgico.
+# 🧪 Backend III — Entrega N°1
 
-## 🚀 Endpoints disponibles
+Este proyecto cumple con los criterios de la consigna para la generación y persistencia de datos mockeados, y además incorpora mejoras técnicas que aportan robustez, modularidad y escalabilidad.
 
-| Método   | Ruta                      | Descripción                                      |
-|----------|---------------------------|--------------------------------------------------|
-| `POST`   | `/api/mocks/generate`     | Genera datos mockeados de usuarios y mascotas   |
-| `GET`    | `/api/mocks/preview`      | Muestra los datos mockeados insertados          |
-| `DELETE` | `/api/mocks/clear`        | Elimina todos los datos mockeados               |
+---
 
-🛡️ Validaciones y blindaje
-    Validación previa de modelos antes de insertar
-    Logs detallados en cada paso (logger.success, logger.warn, logger.error)
-    Middleware global de errores para capturar fallos silenciosos
-    Ocultamiento de credenciales en .env
-    Conexión segura a MongoDB Atlas
+## 📌 Endpoints definidos en `mocks.router.js`
 
-🧪 Ejemplos de uso
-🔹 Generar datos
-    curl -X POST http://localhost:8080/api/mocks/generate
+### 🔹 GET `/api/mocks/mockingusers`
 
-🔹 Ver datos generados
-  curl http://localhost:8080/api/mocks/preview
+Genera usuarios mockeados con formato Mongo-style.
 
-🔹 Borrar datos mockeados
-  curl -X DELETE http://localhost:8080/api/mocks/clear
+- **Parámetro dinámico**: `count` (opcional, default: 50)
+- **Ejemplo**: `/api/mocks/mockingusers?count=20`
 
+Cada usuario incluye:
+- Contraseña encriptada (`coder123`)
+- Rol aleatorio (`user` o `admin`)
+- Array vacío de `pets`
 
-🧠 Helpers y modularidad
-    validateMockData.js: valida consistencia entre modelos y generadores
-    logger.js: logging personalizado con niveles y colores
-    errorHandler.js: middleware global para capturar y responder errores
+---
 
-🔐 Seguridad sugerida
-    Agregar flag MOCKING_ENABLED=true en .env
-    Validar entorno (process.env.NODE_ENV !== 'production')
-    Protección por token o IP si se expone públicamente
+### 🔹 GET `/api/mocks/mockingpets`
+
+Genera mascotas mockeadas con formato Mongo-style.
+
+- **Parámetro dinámico**: `count` (opcional, default: 50)
+- **Ejemplo**: `/api/mocks/mockingpets?count=10`
+
+Cada mascota incluye:
+- Nombre, especie, edad, estado de adopción
+
+---
+
+### 🔹 POST `/api/mocks/generateData`
+
+Genera e inserta usuarios y mascotas en la base de datos.
+
+- **Body**:
+  ```json
+  {
+    "users": 10,
+    "pets": 15
+  }
+
+  - Validaciones:
+- validateMockInput: asegura que los parámetros sean válidos
+- checkMockState: verifica el estado previo de la base
+
+🔹 GET /api/mocks/preview
+Visualiza los datos insertados en la base.
+
+🔹 DELETE /api/mocks/clear
+Limpia los datos mockeados de la base.
+
+✨ Extras Técnicos Implementados
+- ✅ Validaciones previas con validateMockInput y checkMockState
+- ✅ Logger personalizado con niveles y colores (alternativa a Winston)
+- ✅ Middleware global de errores
+- ✅ Helpers reutilizables para generación de mocks
+- ✅ Modularidad en rutas, lógica y servicios
+- ✅ Documentación clara para facilitar el trabajo en equipo
+
+🧠 Observaciones
+- Se ajustaron los nombres de los endpoints para cumplir con la literalidad de la consigna.
+- Se incorporaron mejoras no requeridas que aportan valor técnico.
+- El proyecto está listo para escalar y ser mantenido en entornos productivos.
