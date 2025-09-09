@@ -7,9 +7,10 @@ const schema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    specie:{
-        type:String,
-        required:true
+    specie: {
+    type: String,
+    required: true,
+    enum: ['dog', 'cat', 'rabbit', 'other']
     },
     birthDate:Date,
     adopted:{

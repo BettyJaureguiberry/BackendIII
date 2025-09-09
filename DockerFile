@@ -1,0 +1,18 @@
+# Imagen base con Node.js
+FROM node:18
+
+# Directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copiar y instalar dependencias
+COPY package*.json ./
+RUN npm install
+
+# Copiar el resto del proyecto
+COPY . .
+
+# Exponer el puerto de la API
+EXPOSE 8080
+
+# Comando para iniciar el backend
+CMD ["npm", "start"]

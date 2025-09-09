@@ -2,6 +2,7 @@ import { usersService } from "../services/index.js";
 import { createHash, passwordValidation } from "../utils/index.js";
 import jwt from 'jsonwebtoken';
 import UserDTO from '../dto/User.dto.js';
+import bcrypt from 'bcrypt';
 
 const register = async (req, res) => {
     try {
@@ -20,9 +21,12 @@ const register = async (req, res) => {
         console.log(result);
         res.send({ status: "success", payload: result._id });
     } catch (error) {
+            console.error(`[ERROR] Register failed: ${error.message}`);
+            res.status(500).send({ status: "error", message: "Error al registrar usuario" });
+}
 
     }
-}
+
 
 const login = async (req, res) => {
     const { email, password } = req.body;

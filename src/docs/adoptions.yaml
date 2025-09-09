@@ -1,0 +1,87 @@
+openapi: 3.0.1
+info:
+  title: AdoptMe API
+  version: 1.0.0
+  description: Documentación del módulo Adoptions
+
+paths:
+  /api/adoptions:
+    get:
+      summary: Obtener todas las adopciones
+      tags:
+        - Adoptions
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista de adopciones
+
+  /api/adoptions/{aid}:
+    get:
+      summary: Obtener una adopción por ID
+      tags:
+        - Adoptions
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: aid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Adopción encontrada
+        '404':
+          description: Adopción no encontrada
+
+    delete:
+      summary: Eliminar una adopción por ID
+      tags:
+        - Adoptions
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: aid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Adopción eliminada
+        '404':
+          description: Adopción no encontrada
+
+  /api/adoptions/{uid}/{pid}:
+    post:
+      summary: Crear una adopción
+      tags:
+        - Adoptions
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Adopción creada exitosamente
+        '400':
+          description: Mascota ya adoptada
+        '404':
+          description: Usuario o mascota no encontrada
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

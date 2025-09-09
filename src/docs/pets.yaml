@@ -1,0 +1,128 @@
+openapi: 3.0.1
+info:
+  title: AdoptMe API
+  version: 1.0.0
+  description: Documentación del módulo Pets
+
+paths:
+  /api/pets:
+    get:
+      summary: Listar todas las mascotas
+      tags:
+        - Pets
+      responses:
+        '200':
+          description: Lista de mascotas
+
+    post:
+      summary: Crear una nueva mascota
+      tags:
+        - Pets
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - specie
+                - birthDate
+              properties:
+                name:
+                  type: string
+                specie:
+                  type: string
+                  enum:
+                    - dog
+                    - cat
+                    - rabbit
+                    - other
+                birthDate:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Mascota creada exitosamente
+        '400':
+          description: Datos incompletos
+
+  /api/pets/{pid}:
+    put:
+      summary: Actualizar una mascota
+      tags:
+        - Pets
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                specie:
+                  type: string
+                birthDate:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Mascota actualizada
+
+    delete:
+      summary: Eliminar una mascota
+      tags:
+        - Pets
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Mascota eliminada
+
+  /api/pets/available:
+    get:
+      summary: Listar mascotas disponibles para adopción
+      tags:
+        - Pets
+      responses:
+        '200':
+          description: Lista de mascotas no adoptadas
+
+  /api/pets/owner/{uid}:
+    get:
+      summary: Listar mascotas de un dueño
+      tags:
+        - Pets
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de mascotas del usuario
+
+      components:
+        securitySchemes:
+          bearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT

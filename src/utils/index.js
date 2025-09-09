@@ -1,15 +1,31 @@
 import bcrypt from 'bcrypt';
-import {fileURLToPath} from 'url';
+import jwt from 'jsonwebtoken';
+import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-export const createHash = async(password) =>{
-    const salts = await bcrypt.genSalt(10);
-    return bcrypt.hash(password,salts);
-}
+// 🔐 Hasheo de contraseña
+export const createHash = async (password) => {
+  const salt = await bcrypt.genSalt(10);
+  return bcrypt.hash(password, salt);
+};
 
-export const passwordValidation = async(user,password) => bcrypt.compare(password,user.password);
+// 🔍 Validación de contraseña
+export const passwordValidation = async (user, password) => {
+  return bcrypt.compare(password, user.password);
+};
 
+// 🧾 Generación de token JWT
+export const generateToken = (user) => {
+  const payload = {
+    id: user._id,
+    email: user.email,
+    role: user.role
+  };
+
+  return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+};
+
+// 📁 Resolución de rutas
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
 export default __dirname;

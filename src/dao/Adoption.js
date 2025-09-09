@@ -21,4 +21,12 @@ export default class Adoption {
     delete = (id) =>{
         return adoptionModel.findByIdAndDelete(id);
     }
+
+    
+    getAllPopulated = () => {
+    return adoptionModel.find().populate('owner').populate('pet');
+    }
+    save = (doc) => {
+    return adoptionModel.create(doc);
+    }
 }

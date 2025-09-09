@@ -9,5 +9,9 @@ router.post('/',petsController.createPet);
 router.post('/withimage',uploader.single('image'), petsController.createPetWithImage);
 router.put('/:pid',petsController.updatePet);
 router.delete('/:pid',petsController.deletePet);
+router.patch('/:pid/adopt', petsController.adoptPet);
+router.get('/available', petsController.getAvailablePets);
+router.get('/owner/:uid', petsController.getPetsByOwner);
+
 
 export default router;

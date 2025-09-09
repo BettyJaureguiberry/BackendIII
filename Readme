@@ -1,67 +1,152 @@
-# 🧪 Backend III — Entrega N°1
+🐾 AdoptMe Backend
+Bienvenidos al backend de AdoptMe, una API modular, documentada y dockerizada para gestionar usuarios, mascotas y adopciones. Este proyecto fue diseñado con foco en claridad, validación defensiva y documentación de referencia.
 
-Este proyecto cumple con los criterios de la consigna para la generación y persistencia de datos mockeados, y además incorpora mejoras técnicas que aportan robustez, modularidad y escalabilidad.
+🧱 Estructura del proyecto
+Adoptme-Entrega1/
+├── src/
+│   ├── models/
+│   ├── controllers/
+│   ├── routes/
+│   ├── middleware/
+│   ├── helpers/
+│   ├── docs/
+│   └── app.js
+├── tests/
+├── Dockerfile
+├── .dockerignore
+├── README.md
+├── package.json
+└── swagger.js
 
----
+ Tecnologías utilizadas
+- Node.js + Express
+- MongoDB + Mongoose
+- JWT para autenticación
+- Swagger para documentación
+- Docker para despliegue
+- Jest + Supertest para testing funcional
 
-## 📌 Endpoints definidos en `mocks.router.js`
+📘 Documentación Swagger
+La API está documentada con Swagger en /api-docs. Cada módulo (Users, Pets, Adoptions) tiene su propio archivo YAML en src/docs/.
+Acceso:
+http://localhost:8080/api-docs
 
-### 🔹 GET `/api/mocks/mockingusers`
+Incluye:
+- Validaciones de entrada
+- Seguridad JWT
+- Ejemplos de request y response
+- Códigos de error (400, 401, 404)
 
-Genera usuarios mockeados con formato Mongo-style.
+🧪 Testing
+Los tests funcionales cubren todos los endpoints críticos, incluyendo casos de éxito y error.
+npm test
 
-- **Parámetro dinámico**: `count` (opcional, default: 50)
-- **Ejemplo**: `/api/mocks/mockingusers?count=20`
 
-Cada usuario incluye:
-- Contraseña encriptada (`coder123`)
-- Rol aleatorio (`user` o `admin`)
-- Array vacío de `pets`
+Incluye:
+- Registro y login de usuarios
+- Creación y filtrado de mascotas
+- Flujo completo de adopción
+- Validación de errores y JWT
 
----
+¡Vamos con todo, Betty! Este README no es solo una guía técnica, es una narrativa de entrega con glow. Lo armé completo, modular, y listo para impresionar a cualquier profe, jurado o colega que lo lea.
 
-### 🔹 GET `/api/mocks/mockingpets`
+🐾 AdoptMe Backend
+Bienvenidos al backend de AdoptMe, una API modular, documentada y dockerizada para gestionar usuarios, mascotas y adopciones. Este proyecto fue diseñado con foco en claridad, validación defensiva y documentación de referencia.
 
-Genera mascotas mockeadas con formato Mongo-style.
+🧱 Estructura del proyecto
+Adoptme-Entrega1/
+├── src/
+│   ├── models/
+│   ├── controllers/
+│   ├── routes/
+│   ├── middleware/
+│   ├── helpers/
+│   ├── docs/
+│   └── app.js
+├── tests/
+├── Dockerfile
+├── .dockerignore
+├── README.md
+├── package.json
+└── swagger.js
 
-- **Parámetro dinámico**: `count` (opcional, default: 50)
-- **Ejemplo**: `/api/mocks/mockingpets?count=10`
 
-Cada mascota incluye:
-- Nombre, especie, edad, estado de adopción
 
----
+🚀 Tecnologías utilizadas
+- Node.js + Express
+- MongoDB + Mongoose
+- JWT para autenticación
+- Swagger para documentación
+- Docker para despliegue
+- Jest + Supertest para testing funcional
 
-### 🔹 POST `/api/mocks/generateData`
+📘 Documentación Swagger
+La API está documentada con Swagger en /api-docs. Cada módulo (Users, Pets, Adoptions) tiene su propio archivo YAML en src/docs/.
+Acceso:
+http://localhost:8080/api-docs
 
-Genera e inserta usuarios y mascotas en la base de datos.
 
-- **Body**:
-  ```json
-  {
-    "users": 10,
-    "pets": 15
-  }
+Incluye:
+- Validaciones de entrada
+- Seguridad JWT
+- Ejemplos de request y response
+- Códigos de error (400, 401, 404)
 
-  - Validaciones:
-- validateMockInput: asegura que los parámetros sean válidos
-- checkMockState: verifica el estado previo de la base
+🧪 Testing
+Los tests funcionales cubren todos los endpoints críticos, incluyendo casos de éxito y error.
+npm test
 
-🔹 GET /api/mocks/preview
-Visualiza los datos insertados en la base.
 
-🔹 DELETE /api/mocks/clear
-Limpia los datos mockeados de la base.
+Incluye:
+- Registro y login de usuarios
+- Creación y filtrado de mascotas
+- Flujo completo de adopción
+- Validación de errores y JWT
 
-✨ Extras Técnicos Implementados
-- ✅ Validaciones previas con validateMockInput y checkMockState
-- ✅ Logger personalizado con niveles y colores (alternativa a Winston)
-- ✅ Middleware global de errores
-- ✅ Helpers reutilizables para generación de mocks
-- ✅ Modularidad en rutas, lógica y servicios
-- ✅ Documentación clara para facilitar el trabajo en equipo
+🐳 Docker
+Este backend puede ejecutarse en contenedor con Docker. La imagen incluye dependencias, configuración y exposición del puerto.
+Build local:
+docker build -t adoptme-backend .
+docker run -p 8080:8080 adoptme-backend
 
-🧠 Observaciones
-- Se ajustaron los nombres de los endpoints para cumplir con la literalidad de la consigna.
-- Se incorporaron mejoras no requeridas que aportan valor técnico.
-- El proyecto está listo para escalar y ser mantenido en entornos productivos.
+
+## 📦 Imagen en DockerHub
+
+La imagen está disponible públicamente en DockerHub:
+
+🔗 [bettyjaureguiberry/adoptme-backend](https://hub.docker.com/r/bettyjaureguiberry/adoptme-backend)
+
+```bash
+docker pull bettyjaureguiberry/adoptme-backend:latest
+docker run -p 8080:8080 bettyjaureguiberry/adoptme-backend:latest
+
+
+
+🛡️ Seguridad
+- Autenticación con JWT
+- Middleware de validación
+- Role checks para endpoints protegidos
+- Validación de datos con Mongoose y helpers
+
+
+📦 Endpoints principales
+|  |  |  | 
+|  | /api/users/register |  | 
+|  | /api/users/login |  | 
+|  | /api/pets/available |  | 
+|  | /api/pets |  | 
+|  | /api/adoptions/{uid}/{pid} |  | 
+|  | /api/adoptions |  | 
+
+
+
+🧠 Glow técnico
+Este proyecto fue diseñado con foco en:
+- Modularidad y separación de responsabilidades
+- Validación defensiva y cobertura de errores
+- Documentación clara y reproducible
+- Entrega dockerizada y lista para producción
+
+
+
+
